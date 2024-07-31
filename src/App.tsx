@@ -1,15 +1,18 @@
-import { useState } from "react";
-import { Button } from "@/components/ui/button";
-import Login from "./views/login";
-function App() {
-  const [count, setCount] = useState(0);
+/** @format */
 
-  return (
-    <>
-      <Login></Login>
-      <Button variant="secondary">Secondary</Button>
-    </>
-  );
+import { useState } from 'react'
+import { Routes, Route, Link } from 'react-router-dom'
+import { Segmented, Tabs } from 'antd'
+import Login from './pages/login'
+import Home from './pages/Home'
+
+import { OpenAIOutlined } from '@ant-design/icons'
+function App() {
+   return (
+      <>
+         <Home></Home>
+      </>
+   )
 }
 
-export default App;
+export default App
