@@ -2,31 +2,50 @@
 
 /** @format */
 
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { Breadcrumb, Layout, Menu, theme } from 'antd'
 import Routes from '@/router/routes.js'
-
-const { Header, Content, Footer } = Layout
-
+const { Header, Content, Footer, Sider } = Layout
+const siderStyle: React.CSSProperties = {
+   overflow: 'auto',
+   height: '100vh',
+   position: 'fixed',
+   insetInlineStart: 0,
+   top: 0,
+   bottom: 0,
+   scrollbarWidth: 'thin',
+   scrollbarColor: 'unset'
+}
 const items = [
    {
-      key: '1',
+      key: '/demo',
       label: <Link to={'/demo'}>demo</Link>
    },
    {
-      key: '2',
+      key: '/tailwindcss',
+      label: <Link to={'/tailwindcss'}>tailwindcss</Link>
+   },
+   {
+      key: '/echarts',
       label: <Link to={'/echarts'}>echarts</Link>
    }
 ]
 
 const App: React.FC = () => {
+   const location = useLocation()
    return (
       <Layout>
-         <Header className="p-0">
-            <Menu mode="horizontal" defaultSelectedKeys={['2']} theme={'light'} items={items} />
-         </Header>
-         <Content>
+         <Sider style={siderStyle}>
+            <Menu
+               mode="inline"
+               selectedKeys={[location.pathname]}
+               theme={'light'}
+               items={items}
+               className="bg-slate-100 h-full"
+            />
+         </Sider>
+         <Content className="bg-slate-100" style={{ marginInlineStart: 200 }}>
             <Routes />
          </Content>
       </Layout>
