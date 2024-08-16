@@ -45,7 +45,7 @@ const App: React.FC = () => {
                className="bg-slate-100 h-full"
             />
          </Sider>
-         <Content className="bg-slate-100" style={{ marginInlineStart: 200 }}>
+         <Content style={{ marginInlineStart: 200, background: '#fff' }}>
             <Routes />
          </Content>
       </Layout>
